@@ -53,9 +53,9 @@ void recruterFISA(int *fisa, int nb_recrue);
    ensures incrémente */
 void changerRessourcesFISA(int *statut_fisa);
 
-/* requires un pointeur vers la carte *map
+/* requires un pointeur vers la carte *map, et un pointeur vers un entier *tour représentant le numéro de tour
    assigns *map, *tour
-   ensures incrémente le numéro de tour de 1 */
-void finDuTour(carte *map);
+   ensures incrémente le numéro de tour de 1, et termine le tour suivant les règles définies dans la section 1.8 "Tour du jeu" du sujet */
+void finDuTour(carte *map, int *tour);
 
 #endif
