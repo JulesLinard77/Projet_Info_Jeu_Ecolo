@@ -32,16 +32,11 @@ void recruterFISE(int *fise);
 /* requires un pointeur vers un entier positif représentant le nombre d'élèves FISA que le joueur possède
    assigns *fisa
    ensures incrémente fisa de 1 */
-void recruterFISE(int *fisa);
+void recruterFISA(int *fisa);
 
 /* requires un pointeur vers un FISA
    assigns fisa
    ensures incrémente */
-void changerRessourcesFISA(/* mettre ici l'implémentation pour les FISA */);
-
-/* requires un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède
-   assigns *fisa
-   ensures change le type de ressources produites par le FISA */
 void changerRessourcesFISA(/* mettre ici l'implémentation pour les FISA */);
 
 /* requires un pointeur vers un entier positif représentant le numéro du tour
