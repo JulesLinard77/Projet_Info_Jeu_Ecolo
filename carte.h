@@ -25,15 +25,15 @@ carte creerCarte(int n);
    ensures libère la mémoire associé à *map */
 void libererCarte(carte *map);
 
-/* requires un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède
+/* requires un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fise
    ensures incrémente fise de 1 */
-void recruterFISE(int *fise);
+void recruterFISE(int *fise,  int nb_recrue);
 
-/* requires un pointeur vers un entier positif représentant le nombre d'élèves FISA que le joueur possède
+/* requires un pointeur vers un entier positif représentant le nombre d'élèves FISA que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fisa
    ensures incrémente fisa de 1 */
-void recruterFISA(int *fisa);
+void recruterFISA(int *fisa, int nb_recrue);
 
 /* requires un pointeur *statut_fisa vers un entier valant 0 ou 1
    assigns *statut_fisa
