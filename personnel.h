@@ -6,7 +6,7 @@ typedef struct personnel {
     char nom;
     char prenom;
     int cout_e;
-    int cout_ee;
+    int cout_dd;
     int nombre_achete;
 } personnel;
 
