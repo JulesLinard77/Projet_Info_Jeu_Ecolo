@@ -7,10 +7,7 @@
 - 0 si la case est vide
 - 1 si la case contient la porte transuniverselle
 - 2 si la case produit des ressources
-- 3 si la case contient un collecteur
-- 4 si la case contient un tapis roulant
-- 5 si la case contient une déchetterie
-- 6 si la case contient un centre de recyclage */
+- 3 si la case contient une machine*/
 
 
 /* Une case contient un entier représentant le contenu de la case (suivant les instructions ci dessus), et deux entiers positifs représentant les nombres de ressources et de déchets sur la case */
@@ -18,14 +15,14 @@ struct case {
    int contenu;
    int nb_ressources;
    int nb_dechets;
-}
+};
 
 typedef struct case case;
 
 /* Une carte est un tableau de taille n*n dont les cases sont de type "case" */
 struct carte {
    case[][] carte;
-}
+};
 
 typedef struct carte carte;
 
