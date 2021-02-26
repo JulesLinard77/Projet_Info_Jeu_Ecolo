@@ -19,9 +19,11 @@ struct case {
 
 typedef struct case case;
 
-/* Une carte est un tableau de taille n*n dont les cases sont de type "case" */
+/* Une carte est un tableau de taille n*n dont les cases sont de type "case", et qui contient deux entiers représentant le nombre d'élèves FISE et FISA du joueur */
 struct carte {
    case[][] carte;
+   int fise;
+   int fisa;
 };
 
 typedef struct carte carte;
