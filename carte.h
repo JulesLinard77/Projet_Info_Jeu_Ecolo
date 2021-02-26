@@ -1,4 +1,5 @@
 #ifndef
+#DEFINE
 
 /*Définition du type carte*/
 
