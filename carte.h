@@ -2,13 +2,15 @@
 
 /*Définition du type carte*/
 
-struct carte;
-
-typedef struct carte carte;
-
+/* Une case contient [A COMPLETER] */
 struct case;
 
 typedef struct case case;
+
+/* Une carte est un tableau de taille n*n dont les cases sont de type "case" */
+struct carte;
+
+typedef struct carte carte;
 
 /* Fonctions de l'interface carte.h */
 
@@ -35,12 +37,12 @@ void recruterFISE(int *fisa);
 /* requires un pointeur vers un FISA
    assigns fisa
    ensures incrémente */
-void changerRessourcesFISA(/* mettre ici le truc pour les FISA */);
+void changerRessourcesFISA(/* mettre ici l'implémentation pour les FISA */);
 
 /* requires un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède
    assigns *fisa
    ensures change le type de ressources produites par le FISA */
-void changerRessourcesFISA(/* mettre ici le truc pour les FISA */);
+void changerRessourcesFISA(/* mettre ici l'implémentation pour les FISA */);
 
 /* requires un pointeur vers un entier positif représentant le numéro du tour
    assigns *tour
