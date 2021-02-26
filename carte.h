@@ -34,14 +34,14 @@ void recruterFISE(int *fise);
    ensures incrémente fisa de 1 */
 void recruterFISA(int *fisa);
 
-/* requires un pointeur vers un FISA
-   assigns fisa
+/* requires un pointeur *statut_fisa vers un entier valant 0 ou 1
+   assigns *statut_fisa
    ensures incrémente */
-void changerRessourcesFISA(/* mettre ici l'implémentation pour les FISA */);
+void changerRessourcesFISA(int *statut_fisa);
 
-/* requires un pointeur vers un entier positif représentant le numéro du tour
+/* requires rien
    assigns *tour
    ensures incrémente le numéro de tour de 1 */
-void finDuTour(int *tour);
+void finDuTour();
 
 #endif
