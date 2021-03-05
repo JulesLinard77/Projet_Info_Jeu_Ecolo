@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include "machine.h"
+#include "personnel.h"
 
 /*Définition du type carte*/
 
@@ -47,7 +48,7 @@ void libererCarte(carte *map);
 /* requires un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fise
    ensures incrémente fise de 1 */
-void recruterFISE(int *fise,  int nb_recrue);
+int recruterFISE(int *fise,  int nb_recrue);
 
 /* requires un pointeur vers un entier positif représentant le nombre d'élèves FISA que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fisa
