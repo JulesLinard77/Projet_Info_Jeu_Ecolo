@@ -7,13 +7,6 @@
 
 /*Définition du type carte*/
 
-/* Identifiant des différents contenus des cases:
-- 0 si la case est vide
-- 1 si la case contient la porte transuniverselle
-- 2 si la case produit des ressources
-- 3 si la case contient une machine*/
-
-
 /* Une case contient un entier valant 1 si la porte si situe sur cette case, 0 sinon; un pointeur valant NULL si aucune machine n'est présente, une machine sinon ainsi que le nb de déchets et de ressources*/
 struct carre {
    int porte;
