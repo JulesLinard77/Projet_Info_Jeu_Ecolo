@@ -8,6 +8,7 @@
 #define true 1
 
 int main() {
+    int ressources = 0;
     int break_jeu = false;
     int break_tour = false;
     int numero_tour = 0;
@@ -15,10 +16,19 @@ int main() {
     int taille_plateau = DemandeTailleTbaleau();
     creerCarte(taille_plateau);
 
-    while (ressources < 10000 || carte.dd <= 0) {
+
+
+    int type_eleve = 1;
+    int verif = 1;
+    int x, y;
+    int type_machine = 1;
+    int nbr_eleves;
+    int indice_personnel;
+
+    while (ressources < 10000 || carte.DD <= 0) {
 
         while (!break_tour) {
-            AfficheCarte();
+            AfficheCarte(carte);
             /*
                 Le type d'action que veut réaliser le joueur:
                     0: recruter des élèves
@@ -30,46 +40,46 @@ int main() {
              */
             switch (ActionJoueur()) {
                 case 0 :
-                    int type_eleve = 1;
-                    int verif = 1;
+                    type_eleve = 1;
+                    verif = 1;
                     while (verif != 0 || type_eleve != 0) {
-                        type_eleve = recruter(&nbr_eleves, verif);
+                        type_eleve = Recruter(&nbr_eleves, verif);
                         if (type_eleve == 1) {
-                            verif = recruterFISE($(carte.fise), nbr_eleves);
+                            verif = recruterFISE(&carte, nbr_eleves);
                         }
                         if (type_eleve == 2) {
-                            verif = recruterFISA($(carte.fisa), nbr_eleves);
+                            verif = recruterFISA(&carte, nbr_eleves);
                         }
                     }
                     break;
                 case 1 :
-                    int x, y;
-                    int type_machine = 1;
-                    int verif = 1;
+                    type_machine = 1;
+                    verif = 1;
                     while (verif != 0) {
                         type_machine = NouvelleMachine(&x, &y, verif);
-                        verif = ajouterNouvelleMachine(&carte, x, y, type_machine)
+                        verif = ajouterNouvelleMachine(&carte, x, y, type_machine);
                     }
                     break;
                 case 2:
-                    int x, y;
-                    int verif = 0;
-                    int type_machine = 1;
+                    verif = 0;
+                    type_machine = 1;
                     while (verif != 0) {
                         type_machine = NouvelleMachine(&x, &y, verif);
-                        verif = ajouterNouvelleMachine(&carte, x, y, type_machine, verif_utilisateur)
+                        verif = ajouterNouvelleMachine(&carte, x, y, type_machine);
                     }
                     break;
                 case 3 :
-                    int verif = 1;
-                    int indice_personnel;
+                    verif = 1;
                     while (verif != 0) {
                         indice_personnel = DemandePersonnel(verif);
                         verif = acheterMembrePersonnel(&carte, indice_personnel);
                     }
+                    break;
                 case 4:
+
                     break_tour = true;
                     break;
+
                 case 5:
                     break_jeu = true;
                     break;
@@ -83,6 +93,6 @@ int main() {
             break;
         }
     }
-    libererCarte(carte);
+    libererCarte(&carte);
     return 0;
 }

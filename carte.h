@@ -1,5 +1,5 @@
 #ifndef _CARTE_H
-#DEFINE _CARTE_H
+#define _CARTE_H
 
 #include <stdlib.h>
 #include "machine.h"
@@ -15,24 +15,24 @@
 
 
 /* Une case contient un entier valant 1 si la porte si situe sur cette case, 0 sinon; un pointeur valant NULL si aucune machine n'est présente, une machine sinon ainsi que le nb de déchets et de ressources*/
-struct case {
+struct carre {
    int porte;
    machine* machine;
    int nb_ressources;
    int nb_dechets;
 };
 
-typedef struct case case;
+typedef struct carre carre;
 
 /* Une carte est un tableau de taille n*n dont les cases sont de type "case", deux entiers qui représentent les quantités DD et E, deux entiers représentant le nombre d'élèves FISE et FISA du joueur, et un tableau représentant le personnel et leur nombre */
 struct carte {
-   case[][] carte;
+   carre** carte;
    int DD;
    int E;
    int fise;
    int fisa;
    int production_fisa;
-   int** personnel;
+   int* personnels;
 };
 
 typedef struct carte carte;
@@ -52,12 +52,12 @@ void libererCarte(carte *map);
 /* requires un pointeur vers la carte *map, un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fise
    ensures incrémente fise de 1, et renvoie 0 si c'est possible et 1 sinon */
-int recruterFISE(carte *map, int *fise,  int nb_recrue);
+int recruterFISE(carte *map,  int nb_recrue);
 
 /* requires un pointeur vers la carte *map, un pointeur vers un entier positif représentant le nombre d'élèves FISA que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fisa
    ensures incrémente fisa de 1, et renvoie 0 si c'est possible et 1 sinon */
-int recruterFISA(carte *map, int *fisa, int nb_recrue);
+int recruterFISA(carte *map, int nb_recrue);
 
 /* requires un pointeur vers la carte *map
    assigns *map
@@ -88,6 +88,6 @@ int detruireMachine(carte *map,int x_case,int y_case);
 /* requires le numero du membre du personnel que l'on souhaite acheter
    assigns rien
    ensures ajouter un membre du personnel au joueur, et renvoie 0 si c'est possible et 1 sinon */
-int acheterMembrePersonnel(int numero);
+int acheterMembrePersonnel(carte *map, int numero);
 
 #endif
