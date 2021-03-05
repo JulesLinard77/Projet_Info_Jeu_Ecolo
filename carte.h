@@ -24,11 +24,15 @@ struct case {
 
 typedef struct case case;
 
-/* Une carte est un tableau de taille n*n dont les cases sont de type "case", et qui contient deux entiers représentant le nombre d'élèves FISE et FISA du joueur */
+/* Une carte est un tableau de taille n*n dont les cases sont de type "case", deux entiers qui représentent les quantités DD et E, deux entiers représentant le nombre d'élèves FISE et FISA du joueur, et un tableau représentant le personnel et leur nombre */
 struct carte {
    case[][] carte;
+   int DD;
+   int E;
    int fise;
    int fisa;
+   int production_fisa;
+   int** personnel;
 };
 
 typedef struct carte carte;
@@ -45,20 +49,20 @@ carte creerCarte(int n);
    ensures libère la mémoire associé à *map */
 void libererCarte(carte *map);
 
-/* requires un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
+/* requires un pointeur vers la carte *map, un pointeur vers un entier positif représentant le nombre d'élèves FISE que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fise
-   ensures incrémente fise de 1 */
-int recruterFISE(int *fise,  int nb_recrue);
+   ensures incrémente fise de 1, et renvoie 0 si c'est possible et 1 sinon */
+int recruterFISE(carte *map, int *fise,  int nb_recrue);
 
-/* requires un pointeur vers un entier positif représentant le nombre d'élèves FISA que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
+/* requires un pointeur vers la carte *map, un pointeur vers un entier positif représentant le nombre d'élèves FISA que le joueur possède, et un entier strictement positif représentant le nombre d'élève(s) à recruter
    assigns *fisa
-   ensures incrémente fisa de 1 */
-void recruterFISA(int *fisa, int nb_recrue);
+   ensures incrémente fisa de 1, et renvoie 0 si c'est possible et 1 sinon */
+int recruterFISA(carte *map, int *fisa, int nb_recrue);
 
-/* requires un pointeur *statut_fisa vers un entier valant 0 ou 1
-   assigns *statut_fisa
+/* requires un pointeur vers la carte *map
+   assigns *map
    ensures change le type de ressources produits par les FISA */
-void changerRessourcesFISA(int *statut_fisa);
+void changerRessourcesFISA(carte *map);
 
 /* requires un pointeur vers la carte *map, et un pointeur vers un entier *tour représentant le numéro de tour
    assigns *map, *tour
@@ -67,24 +71,23 @@ void finDuTour(carte *map, int *tour);
 
 /* requires un pointeur vers la carte map, l'abscisse et l'ordonée de la case où ajouter la machine, ainsi qu'un entier donnant l'utilisation de la machine
    assigns *map
-   ensures ajoute une machine du type utilisation à la case (x,y) si on a le budget */
-void ajouterNouvelleMachine(carte *map,int x_case, int y_case,int utilisation);
+   ensures ajoute une machine du type utilisation à la case (x,y) si on a le budget, et renvoie 0 si c'est possible et 1 sinon */
+int ajouterNouvelleMachine(carte *map,int x_case, int y_case,int utilisation);
 
 
-/*requires un pointeur vers la carte map, l'abscisse et l'ordonnée de la case où améliorer la machine
+/* requires un pointeur vers la carte map, l'abscisse et l'ordonnée de la case où améliorer la machine
    assigns *map
-   ensures améliore la machine se trouvant sur la case (x,y) si elle existe et qu'on a le budget */
-void ameliorerMachine(carte *map,int x_case,int y_case);
+   ensures améliore la machine se trouvant sur la case (x,y) si elle existe et qu'on a le budget, et renvoie 0 si c'est possible et 1 sinon */
+int ameliorerMachine(carte *map,int x_case,int y_case);
 
-/*requires un pointeur vers la carte map, l'abscisse et l'ordonnée de la case où améliorer la machine
+/* requires un pointeur vers la carte map, l'abscisse et l'ordonnée de la case où améliorer la machine
    assigns *map
-   ensures détruit la machine se trouvant sur la case (x,y) si elle existe et qu'on a le budget*/
-void detruireMachine(carte *map,int x_case,int y_case);
+   ensures détruit la machine se trouvant sur la case (x,y) si elle existe et qu'on a le budget, et renvoie 0 si c'est possible et 1 sinon */
+int detruireMachine(carte *map,int x_case,int y_case);
 
-/*requires le numero du membre du personnel que l'on souhaite acheter
+/* requires le numero du membre du personnel que l'on souhaite acheter
    assigns rien
-   ensures ajouter un membre du personnel au joueur
-*/
-void acheterMembrePersonnel(int numero);
+   ensures ajouter un membre du personnel au joueur, et renvoie 0 si c'est possible et 1 sinon */
+int acheterMembrePersonnel(int numero);
 
 #endif
