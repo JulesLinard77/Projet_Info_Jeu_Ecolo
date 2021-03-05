@@ -1,5 +1,5 @@
-#ifndef
-#DEFINE
+#ifndef _CARTE_H
+#DEFINE _CARTE_H
 
 #include <stdlib.h>
 #include "machine.h"

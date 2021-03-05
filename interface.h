@@ -1,5 +1,5 @@
-#ifndef
-#DEFINE
+#ifndef _INTERFACE_H
+#DEFINE _INTERFACE_H
 
 int DemandeTailleTbaleau(void);
 void AfficheCarte(carte Carte);
